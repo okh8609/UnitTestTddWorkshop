@@ -87,6 +87,10 @@ namespace OnlineStoreBackend.Test.Unit
 
         [TestCase("taipei101")]
         [TestCase("TAIPEI101")]
+        [TestCase("taipeiZZZ")]
+        [TestCase("000000000")]
+        [TestCase("aaaaaaaaa")]
+        [TestCase("AAAAAAAAA")]
         public void RejectsAccountWhenPasswordWithInvalidCaseRegistered(string password)
         {
             // Arrange

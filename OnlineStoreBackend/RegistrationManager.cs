@@ -27,12 +27,10 @@ namespace OnlineStoreBackend
             {
                 return false;
             }
-            else if (password.ToUpper() == password ||
-                     password.ToLower() == password)
-            {
-                return false;
-            }
+            
+
             return true;
+
         }
     }
 }
