@@ -16,10 +16,10 @@ namespace OnlineStoreBackend.Test.Unit
         {
             // Arrange
             // 安排測試的先決條件
-            IPersistenceManager psm = Substitute.For<IPersistenceManager>();
-            psm.CheckUsernameExists("usr").Returns(false);
+            IPersistenceManager psm = Substitute.For<IPersistenceManager>(); // 使用NSubstitute來模擬出一個已經實作好的object
+            psm.CheckUsernameExists("usr").Returns(false); // 規定說 當輸入參數為"usr"時，會回傳false (意即"usr"這個使用者不存在，所以可以註冊)
 
-            RegistrationManager regMgr = new RegistrationManager(psm);
+            RegistrationManager regMgr = new RegistrationManager(psm); // 依賴注入 (Dependency injection)
 
             // Act
             // 要觸發的動作
@@ -34,18 +34,15 @@ namespace OnlineStoreBackend.Test.Unit
         public void AcceptsAccountWhenValidUsernamePasswordAreRegisteredAndUsernameDoesExist() // 動詞為首：當合法的username、password輸入時，會接受
         {
             // Arrange
-            // 安排測試的先決條件
             IPersistenceManager psm = Substitute.For<IPersistenceManager>();
             psm.CheckUsernameExists("usr").Returns(true);
 
             RegistrationManager regMgr = new RegistrationManager(psm);
 
             // Act
-            // 要觸發的動作
             bool result = regMgr.RegisterAccount("usr", "NtuCsie999");
 
             // Assert
-            // 預期會由什麼樣的結果
             Assert.False(result);
         }
 
