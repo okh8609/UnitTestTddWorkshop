@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace OnlineStoreBackend
 {
@@ -7,27 +8,19 @@ namespace OnlineStoreBackend
     {
         public bool RegisterAccount(string username, string password)
         {
-            if (username.Length < 3 || username.Length > 10)
-            {
+            Regex regex = new Regex("^[A-Za-z0-9]{3,10}$");
+            if (!regex.IsMatch(username))
                 return false;
-            }
-            else if (!username.All(c => (c >= 'A' && c <= 'Z') ||
-                                        (c >= 'a' && c <= 'z') ||
-                                        (c >= '0' && c <= '9')))
-            {
+
+            regex = new Regex("^[A-Za-z0-9]{6,10}$");
+            if (!regex.IsMatch(password))
                 return false;
-            }
-            else if (password.Length < 6 || password.Length > 10)
-            {
+
+            Regex rgx1 = new Regex("[A-Z]");
+            Regex rgx2 = new Regex("[a-z]");
+            Regex rgx3 = new Regex("[0-9]");
+            if (!rgx1.IsMatch(password) || !rgx2.IsMatch(password) || !rgx3.IsMatch(password))
                 return false;
-            }
-            else if (!password.All(c => (c >= 'A' && c <= 'Z') ||
-                                        (c >= 'a' && c <= 'z') ||
-                                        (c >= '0' && c <= '9')))
-            {
-                return false;
-            }
-            
 
             return true;
 
