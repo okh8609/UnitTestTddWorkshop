@@ -6,8 +6,18 @@ namespace OnlineStoreBackend
 {
     public class RegistrationManager
     {
+        private IPersistenceManager psm;
+
+        public RegistrationManager(IPersistenceManager psm)
+        {
+            this.psm = psm;
+        }
+
         public bool RegisterAccount(string username, string password)
         {
+            if (psm.CheckUsernameExists(username) == true)
+                return false;
+
             Regex regex = new Regex("^[A-Za-z0-9]{3,10}$");
             if (!regex.IsMatch(username))
                 return false;
