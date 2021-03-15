@@ -25,5 +25,76 @@ namespace OnlineStoreBackend.Test.Unit
             // 預期會由什麼樣的結果
             Assert.True(result);
         }
+
+        [TestCase("")] // 參數化的測試 (Parameterized Test)
+        [TestCase("1")]
+        [TestCase("12")]
+        [TestCase("12345678901")]
+        [TestCase("123456789012345 ")]
+        public void RejectsAccountWhenUsernameWithInvalidLengthRegistered(string username)
+        {
+            // Arrange
+            RegistrationManager regMgr = new RegistrationManager();
+            // Act
+            bool result = regMgr.RegisterAccount(username, "NtuCsie999"); //一次操縱一個變因
+            // Assert
+            Assert.False(result);
+        }
+
+        [TestCase("user@123")]
+        [TestCase("user!456")]
+        [TestCase("#str$18&")]
+        public void RejectsAccountWhenUsernameWithInvalidCharsRegistered(string username)
+        {
+            // Arrange
+            RegistrationManager regMgr = new RegistrationManager();
+            // Act
+            bool result = regMgr.RegisterAccount(username, "NtuCsie999");
+            // Assert
+            Assert.False(result);
+        }
+
+        [TestCase("")]
+        [TestCase("1")]
+        [TestCase("12")]
+        [TestCase("123")]
+        [TestCase("1234")]
+        [TestCase("12345")]
+        [TestCase("12345678901")]
+        [TestCase("123456789012345 ")]
+        public void RejectsAccountWhenPasswordWithInvalidLengthRegistered(string password)
+        {
+            // Arrange
+            RegistrationManager regMgr = new RegistrationManager();
+            // Act
+            bool result = regMgr.RegisterAccount("usr123", password);
+            // Assert
+            Assert.False(result);
+        }
+
+        [TestCase("user@123")]
+        [TestCase("user!456")]
+        [TestCase("#str$18&")]
+        public void RejectsAccountWhenPasswordWithInvalidCharsRegistered(string password)
+        {
+            // Arrange
+            RegistrationManager regMgr = new RegistrationManager();
+            // Act
+            bool result = regMgr.RegisterAccount("usr123", password);
+            // Assert
+            Assert.False(result);
+        }
+
+        [TestCase("taipei101")]
+        [TestCase("TAIPEI101")]
+        public void RejectsAccountWhenPasswordWithInvalidCaseRegistered(string password)
+        {
+            // Arrange
+            RegistrationManager regMgr = new RegistrationManager();
+            // Act
+            bool result = regMgr.RegisterAccount("usr123", password);
+            // Assert
+            Assert.False(result);
+        }
     }
 }
