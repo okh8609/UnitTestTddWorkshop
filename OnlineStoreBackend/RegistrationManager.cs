@@ -15,9 +15,6 @@ namespace OnlineStoreBackend
 
         public bool RegisterAccount(string username, string password)
         {
-            if (psm.CheckUsernameExists(username) == true)
-                return false;
-
             Regex regex = new Regex("^[A-Za-z0-9]{3,10}$");
             if (!regex.IsMatch(username))
                 return false;
@@ -31,6 +28,11 @@ namespace OnlineStoreBackend
             Regex rgx3 = new Regex("[0-9]");
             if (!rgx1.IsMatch(password) || !rgx2.IsMatch(password) || !rgx3.IsMatch(password))
                 return false;
+
+            if (psm.CheckUsernameExists(username) == true)
+                return false;
+
+            psm.SaveAccount(username, password);
 
             return true;
 
