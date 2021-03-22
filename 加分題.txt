@@ -1,0 +1,73 @@
+加分題
+------
+Adding to the workshop example, use TDD to drive out a LoginManager class that meets the following requirements:
+- It has a Login method that takes two string parameters "username" and "password", and returns a boolean.
+- When given a registered username and correct password, Login should return true.
+- When given a non-registered username, or an incorrect password, Login should return false.
+- Use this LoginManager class in your Main function, together with the RegistrationManager class that we already have in the workshop, so that your program provides both account registration and login functions.
+
+Please follow the following output format:
+
+C:\>OnlineStoreBackend.Main.exe
+
+Login or register
+-----------------
+1. Login
+2. Register
+=> Choice: 1
+
+Login
+-----
+Username: chengwei
+Password: aLongPassword555
+=> Incorrect username or password
+
+Login or register
+-----------------
+1. Login
+2. Register
+=> Choice: 2
+
+Register
+--------
+Username: chengwei
+Password: aLongPassword555
+=> Invalid password
+
+Login or register
+-----------------
+1. Login
+2. Register
+=> Choice: 2
+
+Register
+--------
+Username: chengwei
+Password: NtuCsie99
+=> Registration successful
+
+Login or register
+-----------------
+1. Login
+2. Register
+=> Choice: 1
+
+Login
+-----
+Username: chengwei
+Password: aLongPassword555
+=> Incorrect username or password
+
+Login or register
+-----------------
+Username: chengwei
+Password: NtuCsie99
+=> Login successful
+
+
+評分標準
+--------
+1. 提供足以證明有依照TDD方法開發LoginManager之過程螢幕截圖 (1分)
+2. LoginManager之test cases有寫完整 (1分)
+3. 參照上述範例執行程式, 其register和login之功能都如預期 (1分)
+
