@@ -4,5 +4,6 @@
     {
         bool CheckUsernameExists(string username);
         void SaveAccount(string username, string password);
+        bool VerifyAccount(string username, string password);
     }
 }

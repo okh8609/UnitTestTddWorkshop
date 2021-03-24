@@ -33,5 +33,10 @@ namespace OnlineStoreBackend
             data["Accounts"][username] = password;
             parser.WriteFile("Accounts.ini", data, Encoding.UTF8);
         }
+
+        public bool VerifyAccount(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
