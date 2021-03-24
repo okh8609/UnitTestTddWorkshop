@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OnlineStoreBackend
 {
-    class PersistenceManager : IPersistenceManager
+    public class PersistenceManager : IPersistenceManager
     {
         public PersistenceManager()
         {
