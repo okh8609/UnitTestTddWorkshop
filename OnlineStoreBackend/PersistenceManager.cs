@@ -36,7 +36,14 @@ namespace OnlineStoreBackend
 
         public bool VerifyAccount(string username, string password)
         {
-            throw new NotImplementedException();
+            if (CheckUsernameExists(username))
+            {
+                var parser = new FileIniDataParser();
+                IniData data = parser.ReadFile("Accounts.ini", Encoding.UTF8);
+                if (data["Accounts"][username].Equals(password))
+                    return true;
+            }
+            return false;
         }
     }
 }
