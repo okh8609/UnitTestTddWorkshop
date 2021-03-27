@@ -43,7 +43,7 @@ namespace OnlineStoreBackend.Main
                         if (regMgr.RegisterAccount(username, password))
                             Console.WriteLine("=> Registration successful\r\n");
                         else
-                            Console.WriteLine("=> Invalid password\r\n");
+                            Console.WriteLine("=> Invalid username or password\r\n");
                     }
                 }
                 catch (Exception)
